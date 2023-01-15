@@ -4,8 +4,8 @@ function playSound(keyId) {
 
 const keyList = document.querySelectorAll('.tecla');
 
-let i = 0;
-while (i < keyList.length) {
+// Refatorado utilizando for
+for (let i = 0; i < keyList.length; i++) {
   const key = keyList[i];
   const keyClass = key.classList[1];
   const keyId = `#som_${keyClass}`;
@@ -13,5 +13,17 @@ while (i < keyList.length) {
   key.onclick = () => {
     playSound(keyId);
   };
-  i++;
 }
+
+// Utilizando while
+// let i = 0;
+// while (i < keyList.length) {
+//   const key = keyList[i];
+//   const keyClass = key.classList[1];
+//   const keyId = `#som_${keyClass}`;
+
+//   key.onclick = () => {
+//     playSound(keyId);
+//   };
+//   i++;
+// }
