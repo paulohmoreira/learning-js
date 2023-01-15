@@ -1,5 +1,11 @@
-function playSound(keyId) {
-  document.querySelector(keyId).play();
+function playSound(audioSelector) {
+  const element = document.querySelector(audioSelector);
+
+  if (element && element.localName === 'audio') {
+    element.play();
+  } else {
+    console.error("Element or selector doesn't exists");
+  }
 }
 
 const keyList = document.querySelectorAll('.tecla');
@@ -19,6 +25,7 @@ for (let i = 0; i < keyList.length; i++) {
       key.classList.add('ativa');
     }
   };
+
   key.onkeyup = () => {
     key.classList.remove('ativa');
   };
