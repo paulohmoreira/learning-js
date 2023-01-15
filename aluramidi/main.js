@@ -13,6 +13,15 @@ for (let i = 0; i < keyList.length; i++) {
   key.onclick = () => {
     playSound(keyId);
   };
+
+  key.onkeydown = (event) => {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      key.classList.add('ativa');
+    }
+  };
+  key.onkeyup = () => {
+    key.classList.remove('ativa');
+  };
 }
 
 // Utilizando while
