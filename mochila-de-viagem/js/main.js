@@ -8,6 +8,9 @@ form.addEventListener('submit', (e) => {
   let quantidade = e.target.elements['quantidade'].value;
 
   criaElemento(nome, quantidade);
+
+  nome.value = '';
+  quantidade.value = '';
 });
 
 function criaElemento(nome, quantidade) {
