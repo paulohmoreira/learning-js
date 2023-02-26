@@ -1,10 +1,11 @@
-// O algoritmo começa definindo as posições baixa e alta na lista,
-// correspondentes ao início e ao fim da lista, respectivamente.
-// Em seguida, ele calcula o índice do elemento do meio e verifica se o item
-// buscado é igual a este elemento. Se for, o algoritmo retorna o índice deste elemento.
-// Caso contrário, ele verifica se o item buscado é menor ou maior que o elemento
-// do meio e, em seguida, atualiza a posição de baixo ou alta, respectivamente.
-
+/* 
+  O algoritmo começa definindo as posições baixa e alta na lista, 
+  correspondentes ao início e ao fim da lista, respectivamente.
+  Em seguida, ele calcula o índice do elemento do meio e verifica se o item
+  buscado é igual a este elemento. Se for, o algoritmo retorna o índice deste elemento.
+  Caso contrário, ele verifica se o item buscado é menor ou maior que o elemento
+  do meio e, em seguida, atualiza a posição de baixo ou alta, respectivamente.
+*/
 const pesquisaBinaria = (lista, item) => {
   let baixo = 0;
   let alto = lista.length - 1;
