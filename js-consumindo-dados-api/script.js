@@ -10,17 +10,29 @@
 
 // Async e await
 async function buscaEndereco(cep) {
+  const mensagemErro = document.querySelector('#erro');
+  mensagemErro.innerHTML = '';
+
   try {
     const cosultaCEP = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
     const consultaConvertida = await cosultaCEP.json();
     if (consultaConvertida.erro) throw Error('CEP não existente!');
-    console.log(consultaConvertida);
+
+    const cidade = document.querySelector('#cidade');
+    const logradouro = document.querySelector('#endereco');
+    const estado = document.querySelector('#estado');
+    console.log('🚀 ~ buscaEndereco ~ consultaConvertida:', consultaConvertida);
+
+    cidade.value = consultaConvertida.localidade;
+    logradouro.value = consultaConvertida.logradouro;
+    estado.value = consultaConvertida.uf;
+
     return consultaConvertida;
   } catch (error) {
+    mensagemErro.innerHTML = `<p> CEP inválido. Tente novamente!</p>`;
     console.log(error);
   }
 }
 
-let ceps = ['01001000', '01001001'];
-let conjuntoCeps = ceps.map((valores) => buscaEndereco(valores));
-Promise.all(conjuntoCeps).then((respostas) => console.log(respostas));
+const cep = document.querySelector('#cep');
+cep.addEventListener('focusout', () => buscaEndereco(cep.value));
